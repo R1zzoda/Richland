@@ -1,0 +1,128 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Richland API",
+  "dateExported": "2025-11-30T00:00:00.000Z",
+  "version": "1.1",
+  "requests": [
+    {
+      "name": "Auth - Register",
+      "method": "POST",
+      "url": "http://localhost:3000/auth/register",
+      "body": {
+        "type": "json",
+        "raw": "{\"email\":\"test@example.com\",\"password\":\"123456\",\"username\":\"John\"}"
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "method": "POST",
+      "url": "http://localhost:3000/auth/login",
+      "body": {
+        "type": "json",
+        "raw": "{\"email\":\"test@example.com\",\"password\":\"123456\"}"
+      }
+    },
+    {
+      "name": "Dictionaries - Create",
+      "method": "POST",
+      "url": "http://localhost:3000/dictionaries",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }],
+      "body": { "type": "json", "raw": "{\"name\":\"English A1\"}" }
+    },
+    {
+      "name": "Dictionaries - Get All",
+      "method": "GET",
+      "url": "http://localhost:3000/dictionaries",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "name": "Dictionaries - Update",
+      "method": "PATCH",
+      "url": "http://localhost:3000/dictionaries/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }],
+      "body": { "type": "json", "raw": "{\"name\":\"English A2\"}" }
+    },
+    {
+      "name": "Dictionaries - Delete",
+      "method": "DELETE",
+      "url": "http://localhost:3000/dictionaries/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "name": "Words - Create",
+      "method": "POST",
+      "url": "http://localhost:3000/words",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }],
+      "body": {
+        "type": "json",
+        "raw": "{\"dictionaryId\":1,\"term\":\"apple\",\"translation\":\"яблоко\",\"difficulty\":1}"
+      }
+    },
+    {
+      "name": "Words - By Dictionary",
+      "method": "GET",
+      "url": "http://localhost:3000/words/dictionary/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "name": "Words - Update",
+      "method": "PATCH",
+      "url": "http://localhost:3000/words/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }],
+      "body": {
+        "type": "json",
+        "raw": "{\"term\":\"apple\",\"translation\":\"яблочко\",\"difficulty\":2}"
+      }
+    },
+    {
+      "name": "Words - Delete",
+      "method": "DELETE",
+      "url": "http://localhost:3000/words/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "name": "Words - Due",
+      "method": "GET",
+      "url": "http://localhost:3000/words/due",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "name": "Training - Start",
+      "method": "POST",
+      "url": "http://localhost:3000/training/start",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }],
+      "body": {
+        "type": "json",
+        "raw": "{\"dictionaryId\":1,\"mode\":\"repeat\"}"
+      }
+    },
+    {
+      "name": "Training - Next Word",
+      "method": "GET",
+      "url": "http://localhost:3000/training/session/{{sessionId}}/next-word",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "name": "Training - Answer",
+      "method": "POST",
+      "url": "http://localhost:3000/words/{{wordId}}/answer",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }],
+      "body": {
+        "type": "json",
+        "raw": "{\"correct\":true,\"sessionId\":{{sessionId}}}"
+      }
+    },
+    {
+      "name": "Training - Finish",
+      "method": "POST",
+      "url": "http://localhost:3000/training/finish/{{sessionId}}",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "name": "Training - History",
+      "method": "GET",
+      "url": "http://localhost:3000/training/history",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    }
+  ]
+}

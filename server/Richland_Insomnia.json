@@ -1,0 +1,210 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-11-30T18:52:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2025.1.0",
+  "resources": [
+    {
+      "_id": "wrk_richland_main",
+      "_type": "workspace",
+      "name": "Richland API",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_richland_env",
+      "_type": "environment",
+      "parentId": "wrk_richland_main",
+      "name": "Local",
+      "data": {
+        "base": "http://localhost:3000",
+        "token": ""
+      }
+    },
+
+    
+
+    {
+      "_id": "req_auth_register",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Auth - Register",
+      "method": "POST",
+      "url": "{{ base }}/auth/register",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\",\n  \"username\": \"John\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_login",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Auth - Login",
+      "method": "POST",
+      "url": "{{ base }}/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\"\n}"
+      }
+    },
+
+    
+    {
+      "_id": "req_dict_create",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Dictionaries - Create",
+      "method": "POST",
+      "url": "{{ base }}/dictionaries",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"English A2\",\n  \"languageFrom\": \"EN\",\n  \"languageTo\": \"RU\"\n}"
+      }
+    },
+    {
+      "_id": "req_dict_get_all",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Dictionaries - Get All",
+      "method": "GET",
+      "url": "{{ base }}/dictionaries",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ]
+    },
+    {
+      "_id": "req_dict_update",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Dictionaries - Update",
+      "method": "PATCH",
+      "url": "{{ base }}/dictionaries/1",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"English A2 — Updated\"\n}"
+      }
+    },
+    {
+      "_id": "req_dict_delete",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Dictionaries - Delete",
+      "method": "DELETE",
+      "url": "{{ base }}/dictionaries/1",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ]
+    },
+
+   
+
+    {
+      "_id": "req_words_create",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Words - Create",
+      "method": "POST",
+      "url": "{{ base }}/words",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"dictionaryId\": 1,\n  \"term\": \"apple\",\n  \"translation\": \"яблоко\",\n  \"difficulty\": 1\n}"
+      }
+    },
+    {
+      "_id": "req_words_get_by_dict",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Words - Get by Dictionary",
+      "method": "GET",
+      "url": "{{ base }}/words/dictionary/1",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ]
+    },
+    {
+      "_id": "req_words_due",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Words - Due",
+      "method": "GET",
+      "url": "{{ base }}/words/due",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ]
+    },
+    {
+      "_id": "req_words_answer",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Words - Answer",
+      "method": "POST",
+      "url": "{{ base }}/words/1/answer",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"correct\": true,\n  \"sessionId\": 1\n}"
+      }
+    },
+
+    
+    {
+      "_id": "req_training_start",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Training - Start",
+      "method": "POST",
+      "url": "{{ base }}/training/start",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"dictionaryId\": 1,\n  \"mode\": \"repeat\"\n}"
+      }
+    },
+    {
+      "_id": "req_training_finish",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Training - Finish",
+      "method": "POST",
+      "url": "{{ base }}/training/finish/1",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ]
+    },
+    {
+      "_id": "req_training_next_word",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Training - Next Word",
+      "method": "GET",
+      "url": "{{ base }}/training/session/1/next-word",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ]
+    },
+    {
+      "_id": "req_training_history",
+      "_type": "request",
+      "parentId": "wrk_richland_main",
+      "name": "Training - History",
+      "method": "GET",
+      "url": "{{ base }}/training/history",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ]
+    }
+  ]
+}

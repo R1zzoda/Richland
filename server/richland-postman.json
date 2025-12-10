@@ -1,0 +1,309 @@
+{
+  "info": {
+    "_postman_id": "f3ba3c0c-39b8-4a91-9a08-04942b11edcc",
+    "name": "Richland API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "richland-export"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\":\"test@example.com\",\n  \"password\":\"123456\",\n  \"username\":\"John\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\":\"test@example.com\",\n  \"password\":\"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Dictionaries - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\":\"English A1\",\"languageFrom\":\"EN\",\"languageTo\":\"RU\"}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/dictionaries",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["dictionaries"]
+        }
+      }
+    },
+    {
+      "name": "Dictionaries - Get All",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/dictionaries",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["dictionaries"]
+        }
+      }
+    },
+    {
+      "name": "Dictionaries - Update",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\":\"English A2\"}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/dictionaries/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["dictionaries", "1"]
+        }
+      }
+    },
+    {
+      "name": "Dictionaries - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/dictionaries/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["dictionaries", "1"]
+        }
+      }
+    },
+    {
+      "name": "Words - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dictionaryId\": 1,\n  \"term\": \"apple\",\n  \"translation\": \"яблоко\",\n  \"difficulty\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/words",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["words"]
+        }
+      }
+    },
+    {
+      "name": "Words - By Dictionary",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/words/dictionary/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["words", "dictionary", "1"]
+        }
+      }
+    },
+    {
+      "name": "Words - Update",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"term\": \"apple\",\n  \"translation\": \"яблочко\",\n  \"difficulty\": 2\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/words/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["words", "1"]
+        }
+      }
+    },
+    {
+      "name": "Words - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/words/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["words", "1"]
+        }
+      }
+    },
+    {
+      "name": "Words - Due (SM-2 Review)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/words/due",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["words", "due"]
+        }
+      }
+    },
+    {
+      "name": "Training - Start Session",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dictionaryId\": 1,\n  \"mode\": \"repeat\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/training/start",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["training", "start"]
+        }
+      }
+    },
+    {
+      "name": "Training - Next Word",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/training/session/{{sessionId}}/next-word",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["training", "session", "{{sessionId}}", "next-word"]
+        }
+      }
+    },
+    {
+      "name": "Training - Answer Word",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"correct\": true, \"sessionId\": {{sessionId}}}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/words/{{wordId}}/answer",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["words", "{{wordId}}", "answer"]
+        }
+      }
+    },
+    {
+      "name": "Training - Finish",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/training/finish/{{sessionId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["training", "finish", "{{sessionId}}"]
+        }
+      }
+    },
+    {
+      "name": "Training - History",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/training/history",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["training", "history"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "token", "value": "" },
+    { "key": "sessionId", "value": "" },
+    { "key": "wordId", "value": "" }
+  ]
+}
