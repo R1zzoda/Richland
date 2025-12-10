@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DictionariesPage from "./pages/DictionariesPage";
@@ -9,17 +9,27 @@ import TrainingSessionPage from "./pages/TrainingSessionPage";
 import DashboardPage from "./pages/DashboardPage";
 import StatisticsPage from "./pages/StatisticsPage";
 
-import ProtectedRoute from "./router/ProtectedRoute";  // ✔ корректный импорт
+import ProtectedRoute from "./router/ProtectedRoute";
 import Layout from "./components/Layout";
 
 function App() {
   return (
     <Routes>
+      {/* 👇 ЭТО ГЛАВНОЕ — решает проблему */}
+      <Route
+        path="/"
+        element={
+          localStorage.getItem("token")
+            ? <Navigate to="/dashboard" replace />
+            : <Navigate to="/login" replace />
+        }
+      />
+
       {/* PUBLIC */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
-      {/* PROTECTED + WITH LAYOUT */}
+      {/* PROTECTED */}
       <Route
         path="/dictionaries"
         element={
