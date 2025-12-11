@@ -7,12 +7,17 @@ import { Pool } from 'pg';
     {
       provide: 'PG_POOL',
       useFactory: () => {
+        const connectionString = process.env.DATABASE_URL;
+
+        if (!connectionString) {
+          throw new Error('❌ DATABASE_URL is not defined');
+        }
+
         return new Pool({
-          host: 'localhost',
-          port: 4200,            //  docker пробрасывает 4200 → 5432
-          user: 'postgres',      //  логин
-          password: 'lamb',      //  пароль
-          database: 'Richland',  //  база в контейнере
+          connectionString,
+          ssl: {
+            rejectUnauthorized: false, // Railway требует SSL
+          },
         });
       },
     },
