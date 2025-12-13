@@ -14,6 +14,13 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-gray-100 border-b shadow-sm px-4 py-3 flex gap-4">
       <NavLink
+        to="/dashboard"
+        className={({ isActive }) => (isActive ? `${base} ${active}` : base)}
+      >
+        Главная
+      </NavLink>
+
+      <NavLink
         to="/dictionaries"
         className={({ isActive }) => (isActive ? `${base} ${active}` : base)}
       >
