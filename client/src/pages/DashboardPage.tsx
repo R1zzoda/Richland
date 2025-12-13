@@ -72,7 +72,6 @@ export default function DashboardPage() {
               <div>
                 <div className="font-semibold">{w.term}</div>
                 <div className="text-gray-600">{w.translation}</div>
-                <div className="text-xs text-gray-400">повторы: {w.repetitions} • легкость: {Number(w.easiness).toFixed(2)} • difficulty: {w.difficulty}</div>
               </div>
             </li>
           ))}
