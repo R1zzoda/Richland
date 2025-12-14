@@ -26,7 +26,6 @@ export default function DashboardPage() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-6">
-      <h1 className="text-2xl font-bold">Приборная панель</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded shadow">
@@ -52,7 +51,7 @@ export default function DashboardPage() {
             <div className="text-sm text-gray-500">Точность</div>
             <div className="text-2xl font-bold">{stats.accuracy}%</div>
           </div>
-          <div className="text-sm text-gray-500">Полоса: <span className="font-semibold">{stats.streak} дни</span></div>
+          <div className="text-sm text-gray-500">Полоса: <span className="font-semibold">{stats.streak} дня</span></div>
         </div>
 
         <div className="w-full bg-gray-200 h-3 rounded overflow-hidden">
